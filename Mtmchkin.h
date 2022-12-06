@@ -5,6 +5,7 @@
 #ifndef EX2_GAME_H
 #define EX2_GAME_H
 #include "Card.h"
+#include "Player.h" // I added this line -- is it right?
 #include <iostream>
 
 /*
@@ -58,9 +59,17 @@ public:
     GameStatus getGameStatus() const;
 
     //TODO: complete the Mtmchkin class.
+    
+    // Destroyer class
+    ~Mtmchkin();
+
 
 private:
     //TODO: complete the Mtmchkin class.
+    Player player;
+    Card* cards;
+    GameStatus status;
+    int currentIndex;
 
 };
 
