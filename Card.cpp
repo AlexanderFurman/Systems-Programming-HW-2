@@ -1,56 +1,56 @@
 #include "Card.h"
 
-
 Card::Card(CardType type, const CardStats& stats){
     this->m_effect = type;
     this->m_stats = stats;
 }
 
 
-Card::applyEncounter(Player& player){
-    swtich(this->m_effect){
-        case Battle:
-            if this->stats->force > player.getAttackStrength(){
-                player.damage(this->m_stats->hpLossOnDefeat)
+void Card::applyEncounter(Player& player) const{
+    switch(this->m_effect){
+        case CardType::Battle:
+            const bool& wonFight = (this->m_stats.force > player.getAttackStrength());
+            if(wonFight){
+                player.damage(this->m_stats.hpLossOnDefeat);
             }
             else{
                 player.levelUp();
-                player.addCoins(this->m_stats->loot)
+                player.addCoins(this->m_stats.loot);
             }
-            printBattleResult(NEED TO PUT IF WIN HERE BOOL)
+            printBattleResult(wonFight);
             break;
 
-        case Buff:
-            if(player.pay(this->m_stats->cost)){
-                player.buff(this->m_stats->buff)
-            }
-            break;
-
-        case Heal:
-            if(player.pay(this->m_stats->cost)){
-                player.heal(this->m_stats->heal)
+        case CardType::Buff:
+            if(player.pay(this->m_stats.cost)){
+                player.buff(this->m_stats.buff);
             }
             break;
 
-        case Treasure:
-            player.addCoins(this->m_stats->loot)
+        case CardType::Heal:
+            if(player.pay(this->m_stats.cost)){
+                player.heal(this->m_stats.heal);
+            }
+            break;
+
+        case CardType::Treasure:
+            player.addCoins(this->m_stats.loot);
             break;
     }
 }
 
 
-Card::printInfo(){
-    swtich(this->m_effect){
-        case Battle:
+void Card::printInfo() const{
+    switch(this->m_effect){
+        case CardType::Battle:
             printBattleCardInfo(this->m_stats);
             break;
-        case Buff:
+        case CardType::Buff:
             printBuffCardInfo(this->m_stats);
             break;
-        case Heal:
+        case CardType::Heal:
             printHealCardInfo(this->m_stats);
             break;
-        case Treasure:
+        case CardType::Treasure:
             printTreasureCardInfo(this->m_stats);
             break;
     }
