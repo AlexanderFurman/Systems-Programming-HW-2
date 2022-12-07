@@ -13,7 +13,13 @@ Mtmchkin::~Mtmchkin(){
 }
 
 void Mtmchkin::playNextCard(){
-    this->currentIndex ++;
+    // Check if we have reached the end of the array - if so we go back to first index - else, increment by 1
+    if(this->currentIndex == sizeof(this->cards - 1)){
+        this->currentIndex = 0;
+    }
+    else{
+            this->currentIndex++;
+    }
     Card& currentCard = this->cards[currentIndex];
     currentCard.printInfo();
     currentCard.applyEncounter(this->player);
