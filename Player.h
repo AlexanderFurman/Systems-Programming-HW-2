@@ -12,14 +12,26 @@ typedef int PlayerLevel; /// natural number between 1 to 10
 class Player {
 public:
 
-    Player(const std::string& name, const int maxHP=100, const int force=5);
+    static const int NEW_PLAYER_FORCE = 5;
+    static const int NEW_PLAYER_MAXHP = 100;
+    static const int PLAYER_MAX_LEVEL = 10;
+
+
+
+    explicit Player(const std::string& name, int maxHP=100, int force=5); ///should it be string& or by value?
     ~Player() = default;
     Player(const Player& player) = default;
     Player& operator=(const Player& player) = default;
 
     /*** setters and getters: ***/
-    PlayerLevel getLevel() const;
+
     int getAttackStrength() const; /// return force+level
+    const std::string& getName() const;
+    PlayerLevel getLevel() const;
+    int getForce() const;
+    int getMaxHP() const;
+    int getHP() const;
+    int getCoins() const;
 
     /*** other required methods ***/
     /// if methods get neg/wrong value treat as got 0
@@ -38,8 +50,8 @@ private:
     PlayerLevel m_level; /// int in range 1..10
     int m_force; /// int >= 0
     int m_maxHP; /// int > 0
-    int m_hp; /// int in range 0..maxHP
-    int coins; /// int >= 0
+    int m_HP; /// int in range 0..maxHP
+    int m_coins; /// int >= 0
 
 };
 
