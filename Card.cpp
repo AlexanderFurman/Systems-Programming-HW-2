@@ -5,7 +5,6 @@ Card::Card(CardType type, const CardStats& stats){
     this->m_stats = stats;
 }
 
-
 void Card::applyEncounter(Player& player) const{
     switch(this->m_effect){
         case CardType::Battle:

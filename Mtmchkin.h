@@ -63,6 +63,12 @@ public:
     // Destroyer class
     ~Mtmchkin();
 
+    // Copy Constructor
+    Mtmchkin::Mtmchkin(const Mtmchkin& existingGame);
+
+    // Assignment Operator
+    Mtmchkin& Mtmchkin::operator=(const Mtmchkin& existingGame);
+
 
 private:
     //TODO: complete the Mtmchkin class.

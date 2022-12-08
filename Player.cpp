@@ -28,9 +28,9 @@ int Player::getAttackStrength() const // return force+level  // required
     return m_force+m_level;
 }
 
-const std::string& Player::getName() const
+const std::string& Player::getName() const 
 {
-    return m_name;
+    return m_name; // This should return *char instead of std__string, in oredr to match with the method printPlayerInfo
 }
 
 PlayerLevel Player::getLevel() const // required
