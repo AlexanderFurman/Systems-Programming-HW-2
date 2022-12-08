@@ -12,15 +12,15 @@
 Player::Player(const std::string& name, const int maxHP, const int force) :
     m_name(name), m_level(1), m_force(force),
     m_maxHP(maxHP), m_HP(maxHP), m_coins(0)
-               {
-                    if (maxHP<=0) {
-                        m_maxHP = NEW_PLAYER_MAXHP;
-                        m_HP = NEW_PLAYER_MAXHP;
-                    }
-                    if (force<0) {
-                        m_force = NEW_PLAYER_FORCE;
-                    }
-               }
+   {
+        if (maxHP<=0) {
+            m_maxHP = NEW_PLAYER_MAXHP;
+            m_HP = NEW_PLAYER_MAXHP;
+        }
+        if (force<0) {
+            m_force = NEW_PLAYER_FORCE;
+        }
+   }
 
 /*** getters and setters ***/
 int Player::getAttackStrength() const // return force+level  // required
@@ -43,10 +43,10 @@ int Player::getForce() const
     return m_force;
 }
 
-int Player::getMaxHP() const
-{
-    return m_maxHP;
-}
+//int Player::getMaxHP() const
+//{
+//    return m_maxHP;
+//}
 
 int Player::getHP() const
 {
@@ -116,4 +116,8 @@ bool Player::pay(int deductedCoins)
     }
     m_coins = m_coins-deductedCoins; // has enough coins
     return true;
+}
+
+bool Player::won() const{
+    return getLevel() == PLAYER_MAX_LEVEL;
 }

@@ -63,19 +63,24 @@ public:
     // Destroyer class
     ~Mtmchkin();
 
+    /// omer 8/12: removed "Mtmchkin::" from start of line
     // Copy Constructor
-    Mtmchkin::Mtmchkin(const Mtmchkin& existingGame);
+    Mtmchkin(const Mtmchkin& existingGame);
 
+    /// omer 8/12: removed "Mtmchkin::" before "operator=..."
     // Assignment Operator
-    Mtmchkin& Mtmchkin::operator=(const Mtmchkin& existingGame);
+    Mtmchkin& operator=(const Mtmchkin& existingGame);
 
 
 private:
     //TODO: complete the Mtmchkin class.
     Player m_player;
-    const Card* m_cards;
+    Card* m_cards;
     GameStatus m_status;
     int m_currentIndex;
+    int m_numCards;
+
+    static Card* copyCardArray(const Card* cards ,int numOfCards);
 
 };
 

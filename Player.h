@@ -41,6 +41,7 @@ public:
     void heal(int addedHP); ///increase HP by addedHP with. total max value of maxHP.
     void damage(int deductedHP);
     bool isKnockedOut() const;
+    bool won() const;
     void addCoins(int addedCoins);
     bool pay(int deductedCoins); ///if false - not committing payment.
 
