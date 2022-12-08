@@ -1,12 +1,8 @@
 #include "Mtmchkin.h"
 
 
-Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards){
-    this->player = Player(playerName); // The other things are set automatically right?
-    this->cards = new Card[numOfCards];
-    this->currentIndex = 0;
-
-}
+Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards): 
+    m_player(Player(playerName)), m_cards(cardsArray), m_currentIndex(0), m_status(GameStatus::MidGame){}
 
 Mtmchkin::~Mtmchkin(){
     delete[] this->cards;
@@ -14,12 +10,12 @@ Mtmchkin::~Mtmchkin(){
 
 // Copy constructor
 Mtmchkin::Mtmchkin(const Mtmchkin& existingGame){
-    this->player = existingGame.player;
+    Player this->m_player = existingGame.m_player;
     // Deepcopy of array
-    for(int i = 0; i < sizeof(existingGame.cards); i++){
-        this->cards[i] = existingGame.cards[i];
+    for(int i = 0; i < sizeof(existingGame.m_cards); i++){
+        this->m_cards[i] = existingGame.m_cards[i];
     }
-    this->currentIndex = existingGame.currentIndex; // Is this allowed?? accessing attributes of another object but of same class
+    this->m_currentIndex = existingGame.m_currentIndex; // Is this allowed?? accessing attributes of another object but of same class
 }
 
 //Assignment operator
@@ -45,7 +41,7 @@ void Mtmchkin::playNextCard(){
     Card& currentCard = this->cards[currentIndex];
     currentCard.printInfo();
     currentCard.applyEncounter(this->player);
-    printPlayerInfo(this->player.getName(), this->player.getLevel(), this->player.getForce(), this->player.getHP(), this->player.getCoins());
+    printPlayerInfo(this->player.getName().c_str(), this->player.getLevel(), this->player.getForce(), this->player.getHP(), this->player.getCoins());
 }
 
 GameStatus Mtmchkin::getGameStatus() const{

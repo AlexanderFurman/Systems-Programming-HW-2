@@ -72,10 +72,10 @@ public:
 
 private:
     //TODO: complete the Mtmchkin class.
-    Player player;
-    Card* cards;
-    GameStatus status;
-    int currentIndex;
+    Player m_player;
+    const Card* m_cards;
+    GameStatus m_status;
+    int m_currentIndex;
 
 };
 
