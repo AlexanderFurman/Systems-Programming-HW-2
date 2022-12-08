@@ -2,7 +2,7 @@
 
 /// omer 8/12: think we need to create an array or cards and copy the cards from the cards given;
 Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards): 
-    m_player(Player(playerName)), m_currentIndex(0), m_status(GameStatus::MidGame), m_numCards(numOfCards)
+    m_player(Player(playerName)), m_status(GameStatus::MidGame), m_numCards(numOfCards), m_currentIndex(0)
     {
         m_cards = copyCardArray(cardsArray,numOfCards);
     }
@@ -12,8 +12,8 @@ Mtmchkin::~Mtmchkin(){
 }
 
 // Copy constructor
-Mtmchkin::Mtmchkin(const Mtmchkin& existingGame) : m_player(existingGame.m_player), m_numCards(existingGame.m_numCards),
-    m_currentIndex(existingGame.m_currentIndex), m_status(existingGame.m_status)
+Mtmchkin::Mtmchkin(const Mtmchkin& existingGame) : m_player(existingGame.m_player), m_status(existingGame.m_status),
+    m_numCards(existingGame.m_numCards), m_currentIndex(existingGame.m_currentIndex)
 {
     m_cards = copyCardArray(existingGame.m_cards,existingGame.m_numCards);
 }
@@ -35,6 +35,7 @@ Mtmchkin& Mtmchkin::operator=(const Mtmchkin& existingGame)
 
     delete[] m_cards;
     m_cards = tmpCards;
+    return *this;
 }
 
 void Mtmchkin::playNextCard()

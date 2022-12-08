@@ -75,10 +75,11 @@ public:
 private:
     //TODO: complete the Mtmchkin class.
     Player m_player;
-    Card* m_cards;
     GameStatus m_status;
-    int m_currentIndex;
     int m_numCards;
+    int m_currentIndex;
+    Card* m_cards;
+
 
     static Card* copyCardArray(const Card* cards ,int numOfCards);
 
